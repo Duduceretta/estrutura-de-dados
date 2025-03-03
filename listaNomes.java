@@ -11,24 +11,49 @@ public class listaNomes {
 
         ArrayList<String> listaNomes = new ArrayList<>();
         int numeroPessoas;
+        String nomePesquisa;
 
+        //Pergunta quantos nomes o usuario quer adicionar na lista
         Scanner teclado = new Scanner(System.in);
         System.out.println("Quantos nomes voce quer cadastrar? ");
         numeroPessoas = teclado.nextInt();
+        teclado.nextLine();
 
         for (int i = 0; i < numeroPessoas; i++) {
             System.out.println("Digite o nome: ");
-            String nome = teclado.nextLine();
-            teclado.nextLine();
-            nome.toLowerCase();
-            if (!listaNomes.contains(nome) || !nome.isEmpty()) {
+            String nome = teclado.nextLine().toLowerCase();
+
+            //verifica se o nome nao esta na lista
+            if (!listaNomes.contains(nome) && !nome.isEmpty()) {
                 listaNomes.add(nome);
             }
         }
 
+        //ordena a lista
         listaNomes.sort(null);
-        System.out.println(listaNomes);
         
+        //Lista os nomes
+        System.out.println("Mostrando a lista");
+        for (String nome : listaNomes) {
+            System.out.println(nome);
+        }
+        
+        //Pede o nome para pesquisar na lista
+        System.out.println("Agora digite um nome para pesquisa na lista: ");
+        nomePesquisa = teclado.nextLine().toLowerCase();
+
+        //Verifica se o nome foi removido ou nao
+        if (listaNomes.remove(nomePesquisa)) {
+            System.out.println("Nome removido com sucesso");
+        }else{
+            System.out.println("Nome nao encontrado");
+        }
+
+        System.out.println("Mostrando a lista");
+        for (String nome : listaNomes) {
+            System.out.println(nome);
+        }
+
         teclado.close();
     }
 }

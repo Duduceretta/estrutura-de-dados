@@ -68,9 +68,10 @@ public class lista {
         Scanner teclado = new Scanner(System.in);
 
         //Em java como colocar maiusculo um nome antes de armazena-lo na lista
-
         for (Integer i : lista) {
             System.out.println(i);
         }
+
+        teclado.close();
     }
 }
