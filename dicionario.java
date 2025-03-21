@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 
 public class dicionario {
     public static void main(String[] args) {
@@ -11,5 +12,6 @@ public class dicionario {
         dicionario1.put("nome", "João");
         dicionario1.put("idade", "25");
 
+        listaDicionario.add(dicionario1);
     }
 }
