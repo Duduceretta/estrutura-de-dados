@@ -20,7 +20,7 @@ public class Principal {
      * @param filaNormal - fila normal (numeros acima de 500)
      * @param filaPrioritaria -  fila prioritaria (numeros abaixo de 500)
      */
-    public  static void gerarProcessosEmFilas(Queue<Processo> filaNormal, Queue<Processo> filaPrioritaria){
+    public static void gerarProcessosEmFilas(Queue<Processo> filaNormal, Queue<Processo> filaPrioritaria){
         Random gerador = new Random();
         int quantidadeProcessos = 1000;
         int numeroProcessoGerado;
