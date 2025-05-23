@@ -15,6 +15,7 @@ int main() {
     lista = inserir(999, lista);
     lista = inserir(10, lista);
     lista = inserir(10, lista);
+    lista = inserir(25, lista);
 
     int tamanho = contarLista(lista);
 

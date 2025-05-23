@@ -1,11 +1,13 @@
 #include <cstdlib>
+#include <iostream>
+using namespace std;
 
 typedef struct no {
     int dado;
     struct no *prox;
 } Celula;
 
-int estaNaLista(int numero, Celula *lista) {
+bool estaNaLista(int numero, Celula *lista) {
     for (Celula *p = lista; p != NULL; p = p->prox) {
         if (numero == p->dado){
             return true;
@@ -15,6 +17,11 @@ int estaNaLista(int numero, Celula *lista) {
 }
 
 Celula *inserir(int dado, Celula *lista) {
+    if (estaNaLista(dado, lista)) {
+        cout << dado << " ja existe na lista" << endl;
+        return lista;
+    }
+    
     //alocar memória
     Celula *novo = (Celula *)malloc(sizeof(Celula));
 
@@ -27,22 +34,15 @@ Celula *inserir(int dado, Celula *lista) {
         return novo;
     }
 
-    // alterar ou inserir para que controle duplicados - proiba os duplicados
-    cout << dado << endl;
-    if (estaNaLista(dado, lista))
-    {
-        cout << "Dado ja existente" << endl;
-    } else{
-        // percorrer a estrutura até o final
-        Celula *p;
-        for (p = lista; p->prox != NULL; p = p->prox)
-
-        //encadear e retornar
-        p->prox = novo;
-        cout << "Dado inserido" << endl;
-
+    // percorrer a estrutura até o final
+    Celula *p;
+    for (p = lista; p->prox != NULL; p = p->prox){
+        //percorre a lista
     }
 
+    //encadear e retornar
+    p->prox = novo;
+    cout << "Dado inserido" << endl;
     return lista;
 }
 
@@ -73,13 +73,23 @@ int contarOcorrencia(int numero, Celula *lista) {
 }
 
 //verificar se a lista esta ou nao ordenada
+bool listaOrdenada(Celula *lista) {
+    Celula *p = lista;
+    while (p->prox != NULL) {
+        if (p->dado > p->prox->dado) {
+            return false; // encontrou fora de ordem
+        }
+        p = p->prox;
+    }
+
+    return true;
+}
 
 //media dos elementos
 float mediaLista(int tamanho, Celula *lista) {
-    float media = 0;
+    float soma = 0;
     for (Celula *p = lista; p != NULL; p = p->prox) {
-        media = media + p->dado;
+        soma += p->dado;
     }
-    return media / tamanho; 
+    return soma / tamanho; 
 }
-
